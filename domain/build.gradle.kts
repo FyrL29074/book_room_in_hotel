@@ -4,16 +4,12 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
     // Kotlin coroutines
     val coroutinesVersion = "1.7.3"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-
-    // Koin for Android
-    val koinVersion = "3.4.0"
-    implementation("io.insert-koin:koin-android:$koinVersion")
 }
