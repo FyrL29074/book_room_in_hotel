@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/hotel">
+
+    <fragment
+        android:id="@+id/hotel"
+        android:name="com.fyrl29074.book_room_in_hotel.presentation.features.hotel.HotelFragment"
+        android:label="Hotel" />
+</navigation>
