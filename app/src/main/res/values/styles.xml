@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="main_info">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="rating"></style>
+
+    <style name="linked_text">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="secondary_info">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+</resources>
