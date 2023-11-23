@@ -27,7 +27,6 @@
 
         <TextView
             android:id="@+id/hotel_text"
-            style="@style/main_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hotel"
@@ -57,10 +56,10 @@
 
         <TextView
             android:id="@+id/hotel_name"
-            style="@style/main_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/content_end"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/rating"
@@ -81,16 +80,16 @@
 
         <TextView
             android:id="@+id/price"
-            style="@style/main_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/address"
             tools:text="От 123 456 Р" />
 
         <TextView
-            android:id="@+id/price_for_it"
+            android:id="@+id/price_per"
             style="@style/secondary_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -104,10 +103,10 @@
 
         <TextView
             android:id="@+id/about_hotel"
-            style="@style/main_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/about_hotel"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/price" />
 
@@ -117,8 +116,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/about_hotel"
+            tools:itemCount="2"
             tools:listitem="@layout/item_peculiarity" />
 
         <TextView
@@ -153,14 +154,27 @@
                 layout="@layout/button_about_hotel" />
         </LinearLayout>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/to_rooms"
+            style="@style/main_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/to_choose_room"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/content_end"
+            app:layout_constraintStart_toStartOf="@id/content_start"
+            app:layout_constraintTop_toBottomOf="@id/buttons" />
+
         <ProgressBar
             android:id="@+id/progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -8,4 +8,7 @@
     <string name="what_is_included">Что включено</string>
     <string name="what_is_not_included">Что не включено</string>
     <string name="the_most_important">Самое необходимое</string>
+    <string name="to_choose_room">К выбору номера</string>
+    <string name="more_about_room"><![CDATA[Подробнее о номере >]]></string>
+    <string name="choose_room">Выбрать номер</string>
 </resources>

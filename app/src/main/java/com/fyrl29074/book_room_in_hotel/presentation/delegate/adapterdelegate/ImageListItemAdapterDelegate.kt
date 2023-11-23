@@ -1,4 +1,4 @@
-package com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter
+package com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
