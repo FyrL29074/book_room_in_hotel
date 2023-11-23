@@ -1,6 +1,7 @@
 package com.fyrl29074.data
 
 import com.fyrl29074.data.model.HotelDto
+import com.fyrl29074.data.model.InfoForBookingDto
 import com.fyrl29074.data.model.RoomsDto
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,4 +40,7 @@ interface Api {
 
     @GET("8b532701-709e-4194-a41c-1a903af00195")
     suspend fun getRooms(): Response<RoomsDto>
+
+    @GET("d144777c-a67f-4e35-867a-cacc3b827473")
+    suspend fun bookRoom(): Response<InfoForBookingDto>
 }

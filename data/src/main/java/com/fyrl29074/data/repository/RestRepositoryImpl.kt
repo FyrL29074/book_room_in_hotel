@@ -2,10 +2,13 @@ package com.fyrl29074.data.repository
 
 import com.fyrl29074.data.RetrofitService
 import com.fyrl29074.data.mapper.HotelMapper
+import com.fyrl29074.data.mapper.InfoForBookingMapper
 import com.fyrl29074.data.mapper.RoomMapper
 import com.fyrl29074.data.model.HotelDto
+import com.fyrl29074.data.model.InfoForBookingDto
 import com.fyrl29074.data.model.RoomsDto
 import com.fyrl29074.domain.model.Hotel
+import com.fyrl29074.domain.model.InfoForBooking
 import com.fyrl29074.domain.model.Rooms
 import com.fyrl29074.domain.repository.RestRepository
 
@@ -29,5 +32,16 @@ class RestRepositoryImpl : RestRepository {
         val dto: RoomsDto = response.body()!!
 
         return RoomMapper.map(dto)
+    }
+
+    override suspend fun bookRoom(): InfoForBooking {
+        val response = RetrofitService.api.bookRoom()
+        if (!response.isSuccessful || response.body() == null) {
+            throw Exception(response.message())
+        }
+
+        val dto: InfoForBookingDto = response.body()!!
+
+        return InfoForBookingMapper.map(dto)
     }
 }
