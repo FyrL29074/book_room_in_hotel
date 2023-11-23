@@ -117,6 +117,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/content_end"
             app:layout_constraintHorizontal_bias="0.0"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/about_hotel"
             tools:itemCount="2"
