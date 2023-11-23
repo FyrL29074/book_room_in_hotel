@@ -3,7 +3,7 @@ package com.fyrl29074.book_room_in_hotel.presentation.delegate
 import android.view.ViewGroup
 import androidx.collection.SparseArrayCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.AdapterDelegate
+import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.AdapterDelegate
 
 class AdapterDelegatesManager<T>(vararg delegates: AdapterDelegate<T>) {
     private val delegates: SparseArrayCompat<AdapterDelegate<T>> = SparseArrayCompat()

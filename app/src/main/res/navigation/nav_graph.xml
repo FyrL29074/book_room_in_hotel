@@ -7,5 +7,22 @@
     <fragment
         android:id="@+id/hotel"
         android:name="com.fyrl29074.book_room_in_hotel.presentation.features.hotel.HotelFragment"
-        android:label="Hotel" />
+        android:label="Hotel">
+        <action
+            android:id="@+id/to_rooms"
+            app:destination="@id/rooms">
+            <argument
+                android:name="hotel_name"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/rooms"
+        android:name="com.fyrl29074.book_room_in_hotel.presentation.features.rooms.RoomsFragment"
+        android:label="Rooms">
+        <argument
+            android:name="hotel_name"
+            app:argType="string" />
+    </fragment>
 </navigation>

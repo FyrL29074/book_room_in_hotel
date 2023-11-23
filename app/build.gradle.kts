@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -74,4 +75,6 @@ dependencies {
     // Koin for Android
     val koinVersion = "3.4.0"
     implementation("io.insert-koin:koin-android:$koinVersion")
+
+
 }

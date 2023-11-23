@@ -6,17 +6,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.fyrl29074.book_room_in_hotel.Const
 import com.fyrl29074.book_room_in_hotel.R
 import com.fyrl29074.book_room_in_hotel.databinding.FragmentHotelBinding
 import com.fyrl29074.book_room_in_hotel.presentation.State
+import com.fyrl29074.book_room_in_hotel.presentation.activity.MainActivity
 import com.fyrl29074.book_room_in_hotel.presentation.base.BaseFragment
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.AdapterDelegatesManager
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.DisplayableItem
-import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.ImageListItemAdapterDelegate
-import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.PeculiarityListItemAdapterDelegate
-import com.fyrl29074.book_room_in_hotel.presentation.features.hotel.adapter.ImagesAdapter
-import com.fyrl29074.book_room_in_hotel.presentation.features.hotel.adapter.PeculiaritiesAdapter
+import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.ImageListItemAdapterDelegate
+import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.PeculiarityListItemAdapterDelegate
+import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.ImagesAdapter
+import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.PeculiaritiesAdapter
 import com.fyrl29074.book_room_in_hotel.presentation.model.formatter.ImageFormatter
 import com.fyrl29074.book_room_in_hotel.presentation.model.formatter.PeculiaritiesFormatter
 import com.fyrl29074.domain.model.Hotel
@@ -27,6 +29,8 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHotelBinding
         get() = FragmentHotelBinding::inflate
     private val viewModel: HotelViewModel by viewModel()
+
+    private lateinit var mainActivity: MainActivity
 
     private val imagesAdapter = ImagesAdapter(
         AdapterDelegatesManager<DisplayableItem>(
@@ -42,21 +46,15 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
     )
 
     override fun initUI() {
-        binding.images.adapter = imagesAdapter
-        binding.peculiarities.adapter = peculiaritiesAdapter
+        mainActivity = requireActivity() as MainActivity
 
-        val layoutManager = FlexboxLayoutManager(context)
-        binding.peculiarities.layoutManager = layoutManager
+        with(binding) {
+            images.adapter = imagesAdapter
+            peculiarities.adapter = peculiaritiesAdapter
 
-
-        binding.convenienceButton.title.text = getString(R.string.convenience)
-        binding.convenienceButton.description.text = getString(R.string.the_most_important)
-
-        binding.whatIsIncluded.title.text = getString(R.string.what_is_included)
-        binding.whatIsIncluded.description.text = getString(R.string.the_most_important)
-
-        binding.whatIsNotIncluded.title.text = getString(R.string.what_is_not_included)
-        binding.whatIsNotIncluded.description.text = getString(R.string.the_most_important)
+            val layoutManager = FlexboxLayoutManager(context)
+            peculiarities.layoutManager = layoutManager
+        }
     }
 
     override fun initState() {
@@ -64,11 +62,11 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
             viewModel.state.collect { state ->
                 when (state) {
                     State.Waiting -> {
-                        binding.progressBar.isVisible = false
+                        mainActivity.hideToolbar()
                         viewModel.getHotel()
                     }
 
-                    is State.Loading -> {
+                    State.Loading -> {
                         binding.progressBar.isVisible = true
                     }
 
@@ -96,11 +94,27 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
     }
 
     private fun bindLoadedData(hotel: Hotel) {
-        binding.hotelName.text = hotel.name
-        binding.address.text = hotel.address
-        binding.rating.text = getString(R.string.rating, hotel.rating, hotel.ratingName)
-        binding.price.text = getString(R.string.price, hotel.minimalPrice)
-        binding.priceForIt.text = hotel.priceForIt
+        with(binding) {
+            hotelName.text = hotel.name
+            address.text = hotel.address
+            rating.text = getString(R.string.rating, hotel.rating, hotel.ratingName)
+            price.text = getString(R.string.price, hotel.minimalPrice)
+            pricePer.text = hotel.priceForIt
+
+            convenienceButton.title.text = getString(R.string.convenience)
+            convenienceButton.description.text = getString(R.string.the_most_important)
+
+            whatIsIncluded.title.text = getString(R.string.what_is_included)
+            whatIsIncluded.description.text = getString(R.string.the_most_important)
+
+            whatIsNotIncluded.title.text = getString(R.string.what_is_not_included)
+            whatIsNotIncluded.description.text = getString(R.string.the_most_important)
+
+            toRooms.setOnClickListener {
+                val action = HotelFragmentDirections.toRooms(hotel.name)
+                findNavController().navigate(action)
+            }
+        }
 
         val images = ImageFormatter.format(hotel.imageUrls)
         imagesAdapter.setData(images)

@@ -1,11 +1,11 @@
-package com.fyrl29074.book_room_in_hotel.presentation.features.hotel.adapter
+package com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter
 
 import android.annotation.SuppressLint
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.AdapterDelegatesManager
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.DelegationAdapter
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.DisplayableItem
 
-class PeculiaritiesAdapter(
+class ImagesAdapter(
     adapterDelegatesManager: AdapterDelegatesManager<DisplayableItem>,
     override var items: List<DisplayableItem>
 ) : DelegationAdapter<DisplayableItem>(
@@ -13,7 +13,7 @@ class PeculiaritiesAdapter(
     items,
 ) {
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(data: List<DisplayableItem>) {
+    fun setData(data: List<DisplayableItem.ImageItem>) {
         this.items = data
         notifyDataSetChanged()
     }
