@@ -12,6 +12,7 @@ import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.Peculiarit
 class RoomAdapter(
     private val imagesAdapter: ImagesAdapter,
     private val peculiaritiesAdapter: PeculiaritiesAdapter,
+    private val toBooking: () -> Unit,
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var rooms = listOf<DisplayableItem.RoomItem>()
@@ -46,7 +47,7 @@ class RoomAdapter(
                 price.text = room.price.toString()
                 pricePer.text = room.pricePer
                 chooseRoom.setOnClickListener {
-                    // TODO: onRoomClick()
+                    toBooking()
                 }
             }
         }

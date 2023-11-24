@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fyrl29074.book_room_in_hotel.databinding.ItemRoomBinding
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.DisplayableItem
-import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.ImagesAdapter
-import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.PeculiaritiesAdapter
 
 class RoomListItemAdapterDelegate(
     private val onRoomClick: () -> Unit,

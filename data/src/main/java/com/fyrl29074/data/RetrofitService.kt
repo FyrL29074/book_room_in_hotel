@@ -41,6 +41,6 @@ interface Api {
     @GET("8b532701-709e-4194-a41c-1a903af00195")
     suspend fun getRooms(): Response<RoomsDto>
 
-    @GET("d144777c-a67f-4e35-867a-cacc3b827473")
+    @GET("63866c74-d593-432c-af8e-f279d1a8d2ff")
     suspend fun bookRoom(): Response<InfoForBookingDto>
 }

@@ -14,7 +14,7 @@ class AdapterDelegatesManager<T>(vararg delegates: AdapterDelegate<T>) {
         }
     }
 
-    fun addDelegate(delegate: AdapterDelegate<T>) {
+    private fun addDelegate(delegate: AdapterDelegate<T>) {
         var viewType = delegates.size()
         while (delegates[viewType] != null) {
             viewType++

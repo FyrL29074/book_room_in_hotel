@@ -1,26 +1,25 @@
-package com.fyrl29074.book_room_in_hotel.presentation.features.rooms
+package com.fyrl29074.book_room_in_hotel.presentation.features.booking
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fyrl29074.book_room_in_hotel.presentation.State
-import com.fyrl29074.book_room_in_hotel.presentation.formatter.RoomFormatter
-import com.fyrl29074.domain.usecase.GetRoomsUseCase
+import com.fyrl29074.domain.usecase.GetInfoForBookingUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class RoomsViewModel(
-    private val getRoomsUseCase: GetRoomsUseCase,
+class BookingViewModel(
+    private val getInfoForBookingUseCase: GetInfoForBookingUseCase,
 ) : ViewModel() {
     private val _state = MutableStateFlow<State>(State.Waiting)
     val state = _state.asStateFlow()
 
-    fun getRooms() {
+    fun bookRoom() {
         viewModelScope.launch {
             _state.value = State.Loading
             try {
-                val rooms = RoomFormatter.format(getRoomsUseCase.execute())
-                _state.value = State.Loaded(rooms)
+                val info = getInfoForBookingUseCase.execute()
+                _state.value = State.Loaded(info)
             } catch (e: Exception) {
                 _state.value = State.Error("${e.message}")
             }

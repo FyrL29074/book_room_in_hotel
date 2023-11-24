@@ -21,8 +21,16 @@
         android:id="@+id/rooms"
         android:name="com.fyrl29074.book_room_in_hotel.presentation.features.rooms.RoomsFragment"
         android:label="Rooms">
+        <action
+            android:id="@+id/to_booking"
+            app:destination="@id/booking" />
         <argument
             android:name="hotel_name"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/booking"
+        android:name="com.fyrl29074.book_room_in_hotel.presentation.features.booking.BookingFragment"
+        android:label="Booking" />
 </navigation>

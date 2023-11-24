@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.fyrl29074.book_room_in_hotel.Const
 import com.fyrl29074.book_room_in_hotel.databinding.FragmentRoomsBinding
@@ -15,7 +16,6 @@ import com.fyrl29074.book_room_in_hotel.presentation.delegate.AdapterDelegatesMa
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.DisplayableItem
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.ImageListItemAdapterDelegate
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.PeculiarityListItemAdapterDelegate
-import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.RoomListItemAdapterDelegate
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.ImagesAdapter
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.PeculiaritiesAdapter
 import kotlinx.coroutines.launch
@@ -42,7 +42,9 @@ class RoomsFragment : BaseFragment<FragmentRoomsBinding>() {
             ),
             listOf()
         ),
-    )
+    ) {
+        toBooking()
+    }
 
     override fun initUI() {
         mainActivity = requireActivity() as MainActivity
@@ -96,8 +98,9 @@ class RoomsFragment : BaseFragment<FragmentRoomsBinding>() {
         roomAdapter.setData(rooms)
     }
 
-    private fun onRoomClick() {
-//        findNavController().navigate(R.id)
+    private fun toBooking() {
+        val action = RoomsFragmentDirections.toBooking()
+        findNavController().navigate(action)
     }
 
     override fun onDestroy() {
