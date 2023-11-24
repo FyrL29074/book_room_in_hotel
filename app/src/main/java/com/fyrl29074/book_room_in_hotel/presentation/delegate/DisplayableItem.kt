@@ -11,4 +11,14 @@ sealed class DisplayableItem {
         val peculiarities: List<PeculiarityItem>,
         val imageUrls: List<ImageItem>,
     ) : DisplayableItem()
+
+    data class TouristItem(
+        val id: Int,
+        val name: String,
+        val surname: String,
+        val dateOfBirth: String,
+        val citizenship: String,
+        val foreignPassportNumber: String,
+        val foreignPassportExpiryDate: String,
+    ) : DisplayableItem()
 }

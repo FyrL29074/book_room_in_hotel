@@ -1,4 +1,4 @@
-package com.fyrl29074.book_room_in_hotel.presentation.model.formatter
+package com.fyrl29074.book_room_in_hotel.presentation.formatter
 
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.DisplayableItem
 import com.fyrl29074.domain.model.Rooms

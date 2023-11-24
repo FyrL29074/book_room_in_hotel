@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.features.booking.BookingFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/hotel_info"
+            layout="@layout/layout_hotel_info" />
+
+        <include
+            android:id="@+id/tour_info"
+            layout="@layout/layout_tour_info" />
+
+        <include
+            android:id="@+id/info_about_buyer"
+            layout="@layout/layout_info_about_buyer" />
+
+        <include
+            android:id="@+id/info_about_tourists"
+            layout="@layout/layout_tourists" />
+
+        <include
+            android:id="@+id/add_tourist_section"
+            layout="@layout/layout_add_tourist" />
+
+        <include
+            android:id="@+id/expenses"
+            layout="@layout/layout_expenses" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/pay"
+            style="@style/main_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/pay" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

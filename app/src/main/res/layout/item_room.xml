@@ -46,6 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
         app:layout_constraintEnd_toEndOf="@id/content_end"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/content_start"
@@ -61,7 +62,6 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="@string/more_about_room"
-        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="@id/content_start"
         app:layout_constraintTop_toBottomOf="@id/peculiarities" />
 
@@ -94,7 +94,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/choose_room"
-        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@id/content_end"
         app:layout_constraintStart_toStartOf="@id/content_start"
         app:layout_constraintTop_toBottomOf="@id/price" />

@@ -19,11 +19,10 @@ import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.Im
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate.PeculiarityListItemAdapterDelegate
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.ImagesAdapter
 import com.fyrl29074.book_room_in_hotel.presentation.delegate.adapter.PeculiaritiesAdapter
-import com.fyrl29074.book_room_in_hotel.presentation.model.formatter.ImageFormatter
-import com.fyrl29074.book_room_in_hotel.presentation.model.formatter.PeculiaritiesFormatter
+import com.fyrl29074.book_room_in_hotel.presentation.formatter.ImageFormatter
+import com.fyrl29074.book_room_in_hotel.presentation.formatter.PeculiaritiesFormatter
 import com.fyrl29074.domain.model.Hotel
 import kotlinx.coroutines.launch
-import com.google.android.flexbox.FlexboxLayoutManager
 
 class HotelFragment : BaseFragment<FragmentHotelBinding>() {
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHotelBinding
@@ -47,15 +46,15 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
 
     override fun initUI() {
         mainActivity = requireActivity() as MainActivity
+        mainActivity.hideToolbar()
 
         with(binding) {
             images.adapter = imagesAdapter
             peculiarities.adapter = peculiaritiesAdapter
-
-            val layoutManager = FlexboxLayoutManager(context)
-            peculiarities.layoutManager = layoutManager
         }
     }
+
+    override fun setListeners() = Unit
 
     override fun initState() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -96,7 +95,7 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
     private fun bindLoadedData(hotel: Hotel) {
         with(binding) {
             hotelName.text = hotel.name
-            address.text = hotel.address
+            hotelAddress.text = hotel.address
             rating.text = getString(R.string.rating, hotel.rating, hotel.ratingName)
             price.text = getString(R.string.price, hotel.minimalPrice)
             pricePer.text = hotel.priceForIt
