@@ -1,5 +1,6 @@
 package com.fyrl29074.book_room_in_hotel.presentation.features.booking
 
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -44,10 +45,40 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>() {
             touristsAdapter.setData(listOf())
             infoAboutTourists.tourists.isVisible = touristsAdapter.itemCount != 0
         }
+    }
 
-        binding.addTouristSection.addTouristBtn.setOnClickListener {
-            binding.infoAboutTourists.tourists.isVisible = true
-            touristsAdapter.addEmptyItem()
+    override fun setListeners() {
+        with(binding) {
+            addTouristSection.addTouristBtn.setOnClickListener {
+                infoAboutTourists.tourists.isVisible = true
+                touristsAdapter.addEmptyItem()
+            }
+
+            infoAboutBuyer.phoneEditText.addTextChangedListener(
+                PhoneNumberFormattingTextWatcher()
+            )
+
+            infoAboutBuyer.emailEditText.setOnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    val enteredEmail = infoAboutBuyer.emailEditText.text.toString()
+                    if (viewModel.isValidEmail(enteredEmail)) {
+                        infoAboutBuyer.email.error = null
+                        infoAboutBuyer.email.setBackgroundResource(R.drawable.bg_rounded_gray)
+                    } else {
+                        infoAboutBuyer.email.error =
+                            getString(R.string.invalid_email_error)
+                        infoAboutBuyer.email.setBackgroundColor(
+                            requireContext().resources.getColor(
+                                R.color.error, requireContext().theme
+                            )
+                        )
+                    }
+                }
+            }
+
+            pay.setOnClickListener {
+
+            }
         }
     }
 
@@ -79,7 +110,8 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>() {
 
                     is State.Error -> {
                         binding.progressBar.isVisible = false
-                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT)
+                            .show()
                     }
 
                     else -> {
@@ -103,7 +135,8 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>() {
 
             tourInfo.departureFromValue.text = info.departure
             tourInfo.arrivalCountryValue.text = info.arrivalCountry
-            tourInfo.datesValue.text = getString(R.string.dates_of_tour, info.tourDateStart, info.tourDateStop)
+            tourInfo.datesValue.text =
+                getString(R.string.dates_of_tour, info.tourDateStart, info.tourDateStop)
             tourInfo.nightsValue.text = info.numberOfNights.toString()
             tourInfo.hotelValue.text = info.hotelName
             tourInfo.roomValue.text = info.room
@@ -111,7 +144,7 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>() {
 
             expenses.tourValue.text = info.tourPrice.toString()
             expenses.fuelExpensesValue.text = info.fuelCharge.toString()
-            expenses.serviceExpensesValue .text = info.serviceCharge.toString()
+            expenses.serviceExpensesValue.text = info.serviceCharge.toString()
             val total = info.tourPrice + info.fuelCharge + info.serviceCharge
             expenses.totalValue.text = total.toString()
         }

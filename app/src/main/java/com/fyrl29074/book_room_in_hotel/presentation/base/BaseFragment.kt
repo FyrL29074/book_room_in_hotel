@@ -27,10 +27,13 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
+        setListeners()
         initState()
     }
 
     protected abstract fun initUI()
+
+    protected abstract fun setListeners()
 
     protected abstract fun initState()
 

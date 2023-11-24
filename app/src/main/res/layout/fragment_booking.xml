@@ -36,7 +36,7 @@
             layout="@layout/layout_expenses" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/to_rooms"
+            android:id="@+id/pay"
             style="@style/main_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

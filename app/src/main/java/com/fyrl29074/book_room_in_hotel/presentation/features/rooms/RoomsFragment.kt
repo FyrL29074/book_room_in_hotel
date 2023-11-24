@@ -53,6 +53,8 @@ class RoomsFragment : BaseFragment<FragmentRoomsBinding>() {
         binding.rooms.adapter = roomAdapter
     }
 
+    override fun setListeners() = Unit
+
     override fun initState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect { state ->

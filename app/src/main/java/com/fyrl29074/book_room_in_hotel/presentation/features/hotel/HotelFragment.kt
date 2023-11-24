@@ -54,6 +54,8 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
         }
     }
 
+    override fun setListeners() = Unit
+
     override fun initState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect { state ->

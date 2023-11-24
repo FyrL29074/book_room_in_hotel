@@ -35,4 +35,5 @@
     <string name="dates">Даты</string>
     <string name="country_city">Страна, город</string>
     <string name="tourist_counter">%1$d Турист</string>
+    <string name="invalid_email_error">Почта введена неверено</string>
 </resources>
