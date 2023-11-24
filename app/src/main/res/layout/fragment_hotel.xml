@@ -11,6 +11,12 @@
         android:background="@color/white"
         tools:context=".presentation.features.hotel.HotelFragment">
 
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="images, rating, hotel_name, hotel_address, price, price_per, about_hotel, peculiarities, description, buttons, to_rooms" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/content_start"
             android:layout_width="0dp"
@@ -25,16 +31,6 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <TextView
-            android:id="@+id/hotel_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hotel"
-            android:textSize="32sp"
-            app:layout_constraintEnd_toEndOf="@id/content_end"
-            app:layout_constraintStart_toStartOf="@id/content_start"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/images"
             android:layout_width="0dp"
@@ -42,17 +38,18 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/content_end"
             app:layout_constraintStart_toStartOf="@id/content_start"
-            app:layout_constraintTop_toBottomOf="@id/hotel_text"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_image" />
 
         <TextView
             android:id="@+id/rating"
             style="@style/rating"
             android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/images"
-            tools:text="5 Превосходно!" />
+            tools:text="★ 5 Превосходно!" />
 
         <TextView
             android:id="@+id/hotel_name"
@@ -115,9 +112,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             app:layout_constraintEnd_toEndOf="@id/content_end"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
             app:layout_constraintStart_toStartOf="@id/content_start"
             app:layout_constraintTop_toBottomOf="@id/about_hotel"
             tools:itemCount="2"

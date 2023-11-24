@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="rating"></style>
+    <style name="rating">
+        <item name="android:background">@drawable/bg_rounded_light_yellow</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:padding">8dp</item>
+    </style>
 
     <style name="linked_text">
         <item name="android:textColor">@color/blue</item>
