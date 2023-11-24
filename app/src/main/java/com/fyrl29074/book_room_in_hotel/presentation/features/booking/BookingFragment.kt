@@ -26,7 +26,6 @@ class BookingFragment : BaseFragment<FragmentBookingBinding>() {
 
     private lateinit var mainActivity: MainActivity
 
-
     private val touristsAdapter = TouristsAdapter(
         AdapterDelegatesManager<DisplayableItem>(
             TouristListItemAdapterDelegate(),

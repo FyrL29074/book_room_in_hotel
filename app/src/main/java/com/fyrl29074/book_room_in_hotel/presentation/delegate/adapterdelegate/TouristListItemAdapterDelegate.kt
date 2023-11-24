@@ -2,6 +2,8 @@ package com.fyrl29074.book_room_in_hotel.presentation.delegate.adapterdelegate
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.fyrl29074.book_room_in_hotel.R
 import com.fyrl29074.book_room_in_hotel.databinding.ItemTouristBinding
@@ -36,6 +38,27 @@ class TouristListItemAdapterDelegate: AdapterDelegate<DisplayableItem> {
                 citizenshipEditText.setText(item.citizenship)
                 foreignPassportNumberEditText.setText(item.foreignPassportNumber)
                 foreignPassportExpiryDateEditText.setText(item.foreignPassportExpiryDate)
+
+                hideOpenTourist.setOnClickListener {
+                    if (infoContainer.isVisible) {
+                        infoContainer.isVisible = false
+
+                        hideOpenTourist.setImageDrawable(
+                            AppCompatResources.getDrawable(
+                                binding.root.context,
+                                R.drawable.ic_arrow_down_blue
+                            )
+                        )
+                    } else {
+                        infoContainer.isVisible = true
+                        hideOpenTourist.setImageDrawable(
+                            AppCompatResources.getDrawable(
+                                binding.root.context,
+                                R.drawable.ic_arrow_up_blue,
+                            )
+                        )
+                    }
+                }
             }
         }
     }
