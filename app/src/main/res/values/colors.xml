@@ -8,4 +8,6 @@
     <color name="gray">#828796</color>
     <color name="light_gray">#F6F6F9</color>
     <color name="lighter_gray">#FBFBFC</color>
+    <color name="yellow">#FFC800</color>
+    <color name="light_yellow">#33FFC700</color>
 </resources>

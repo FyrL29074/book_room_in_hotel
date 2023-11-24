@@ -17,7 +17,7 @@
         style="@style/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="5 Превосходно!" />
+        tools:text="★ 5 Превосходно!" />
 
     <TextView
         android:id="@+id/hotel_name"

@@ -46,11 +46,17 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
 
     override fun initUI() {
         mainActivity = requireActivity() as MainActivity
-        mainActivity.hideToolbar()
+        mainActivity.showToolbar("Отель")
 
         with(binding) {
             images.adapter = imagesAdapter
             peculiarities.adapter = peculiaritiesAdapter
+
+            convenienceButton.icon.setImageResource(R.drawable.ic_happy)
+            whatIsIncluded.icon.setImageResource(R.drawable.ic_included)
+            whatIsNotIncluded.icon.setImageResource(R.drawable.ic_not_included)
+
+            content.visibility = android.view.View.INVISIBLE
         }
     }
 
@@ -79,6 +85,7 @@ class HotelFragment : BaseFragment<FragmentHotelBinding>() {
                             val hotel = state.data
 
                             bindLoadedData(hotel)
+                            binding.content.isVisible = true
                         }
 
                         binding.progressBar.isVisible = false
